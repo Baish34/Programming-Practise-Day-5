@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capitalize Sentence</title>
+</head>
+
+<body>
+  <h1>Capitalize Words Program</h1>
+  <label for="sentence">Enter a sentence:</label>
+  <input type="text" id="sentence">
+  <button id="capitalizeButton">Capitalize Words</button>
+  <p id="output"></p>
+
+  <script>
+
+    const capitalizeButton = document.getElementById("capitalizeButton");
+    capitalizeButton.addEventListener("click", capitalizeSentence);
+
+    function capitalizeSentence() {
+      let sentenceInput = document.getElementById("sentence").value;
+      let outputElement = document.getElementById("output");
+
+      let words = sentenceInput.split(" ");
+      let capitalizedSentence = "";
+
+      if (words.length < 4) {
+        for (let i = 0; i < words.length; i++) {
+          capitalizedSentence += words[i].charAt(0).toUpperCase() + words[i].slice(1).toLowerCase() + " ";
+        }
+      } else {
+        capitalizedSentence = words[0].charAt(0).toUpperCase() + words[0].slice(1).toLowerCase() + " ";
+        capitalizedSentence += words.slice(1).join(" ").toLowerCase();
+      }
+      if (capitalizedSentence.length > 0 && capitalizedSentence.charAt(capitalizedSentence.length - 1) === " ") {
+        capitalizedSentence = capitalizedSentence.slice(0, -1);
+      }
+
+      outputElement.textContent = capitalizedSentence;
+    }
+  </script>
+</body>
+
+</html>
